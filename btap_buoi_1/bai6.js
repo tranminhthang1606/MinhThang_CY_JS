@@ -42,6 +42,7 @@ function mergeByBrand(arr) {
     return newArr;
 }
 
+
 console.log(mergeByBrand(arr));
 
 

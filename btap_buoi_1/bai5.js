@@ -5,7 +5,7 @@ let processedString = string.replace(/[@#!\{\}\[\]\(\)]/g, '');
 processedString = processedString.replace(/\s+/g, ' ').trim();
 function handleStringA(string) {
     if(string.trim()==''){
-        console.log('[]');
+        console.log([]);
         return;
     }
     const splitArr = string.split(' ').reverse();
@@ -13,7 +13,6 @@ function handleStringA(string) {
         let splittedElements = e.split('');
         splittedElements[0] = splittedElements[0].toUpperCase();
         splitArr[index] = splittedElements.join('');
-
     });
     console.log(splitArr);
 }
