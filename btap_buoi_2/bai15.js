@@ -1,7 +1,11 @@
-let keywords = "()";
+let keywords = "([])";
 
-let closeKey = [')','}',']'];
 
+let matchKey ={
+    ')':'(',
+    ']':'[',
+    '}':'{'
+}
 
 let checkMatch = (keywords)=>{
     let stack = [];
@@ -9,10 +13,12 @@ let checkMatch = (keywords)=>{
         if(keywords[i] === '(' || keywords[i] === '[' || keywords[i] === '{'){
             stack.push(keywords[i]);
         }else if(keywords[i] === ')' || keywords[i] === ']' || keywords[i] === '}'){
-            if(stack.length === 0 || closeKey.indexOf(keywords[i])!== closeKey.indexOf(stack.pop())){
+            if(stack.length === 0 || matchKey[keywords[i]]!== stack.pop()){
                 return false;
             }
         }
     }
     return stack.length === 0;
 }
+
+console.log(checkMatch(keywords));
