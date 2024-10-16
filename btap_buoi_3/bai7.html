@@ -19,6 +19,9 @@
             display: flex;
             justify-content: center;
             flex-direction: column;
+            width: 80%;
+            margin: auto;
+
         }
 
         form>div>div {
@@ -29,12 +32,13 @@
         label {
             padding: 12px 12px 12px 0;
             width: 15%;
+            text-align: start;
         }
 
         input[type="text"],
         input[type="password"],
         input[type="email"] {
-            width: 30%;
+            width: 50%;
             padding: 12px 20px;
             margin: 8px 0;
             border: 1px solid #ccc;
@@ -88,10 +92,18 @@
         const password = document.getElementById("password");
         const email = document.getElementById("email");
         const form = document.querySelector('form');
+        const inputNodes = document.querySelectorAll("input");
         const logError = (error, node) => {
             let message = node.parentElement.parentElement.querySelector('.error')
             message.innerText = error;
         }
+        inputNodes.forEach((node) => {
+            node.addEventListener('click', function () {
+                document.querySelectorAll('.error').forEach(item => {
+                    item.innerText = '';
+                })
+            })
+        })
         form.addEventListener("submit", function (e) {
             e.preventDefault();
             let reg = /\S+@\S+/;
