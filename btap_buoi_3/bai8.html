@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+            max-width: 500px;
+            width: 100%;
+            position: relative;
+            margin: auto;
+        }
+
+        .slide {
+            overflow: hidden;
+            max-width: 100%;
+            margin: auto;
+        }
+
+        .slide>div {
+            display: flex;
+            margin: auto;
+            width: 100%;
+            position: relative;
+            transition: all ease 0.5s;
+        }
+
+        .slide img {
+            width: 100%;
+        }
+
+        .left {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
+        }
+
+        .right {
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="slide">
+            <div>
+                <img src="./assets/footer-1.png" alt="">
+                <img src="./assets/footer-2.png" alt="">
+                <img src="./assets/footer-3.png" alt="">
+                <img src="./assets/footer-4.png" alt="">
+                <img src="./assets/footer-5.png" alt="">
+                <img src="./assets/footer-6.png" alt="">
+            </div>
+        </div>
+        <img onclick="changeSlide(1)" class="right" src="./assets/next.png" alt="">
+        <img onclick="changeSlide(-1)" class="left" src="./assets/previous.png" alt="">
+    </div>
+
+    <script>
+        const left = document.querySelector('.left');
+        const right = document.querySelector('.right');
+        const slide = document.querySelector('.slide > div');
+        const container = document.querySelector('.container');
+        let currentSlide = 0;
+        let currentWidth = container.offsetWidth;
+
+        window.addEventListener('resize', function () {
+            currentWidth = container.offsetWidth
+        })
+        const changeSlide = (step) => {
+            currentSlide += step
+            console.log(currentWidth, currentSlide)
+            if (currentSlide >= slide.children.length) {
+                currentSlide = 0;
+                slide.style.transform = 'translateX(' + (-currentWidth * currentSlide) + 'px)'
+                return;
+            }
+            if (currentSlide < 0) {
+                currentSlide = slide.children.length - 1;
+                slide.style.transform = 'translateX(' + (-currentWidth * currentSlide) + 'px)'
+                return;
+            }
+            slide.style.transform = 'translateX(' + (-currentWidth * currentSlide) + 'px)'
+        }
+    </script>
+</body>
+
+</html>

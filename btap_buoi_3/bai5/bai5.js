@@ -8,7 +8,8 @@ let copyMatchLi = () => {
         console.log(li1.innerText);
         for (const li2 of ul2.children)  {
             if(li1.innerText == li2.innerText){
-                childList.push(li1);
+                let pushEl = li1.cloneNode(true);
+                childList.push(pushEl);
             }
         }
     }
