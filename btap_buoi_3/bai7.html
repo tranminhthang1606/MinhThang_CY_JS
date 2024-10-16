@@ -1,14 +1,118 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        form {
+            width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        form>div {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        form>div>div {
+            display: flex;
+            justify-content: center;
+        }
+
+        label {
+            padding: 12px 12px 12px 0;
+            width: 15%;
+        }
+
+        input[type="text"],
+        input[type="password"],
+        input[type="email"] {
+            width: 30%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        .error {
+            color: red;
+        }
+    </style>
 </head>
+
 <body>
-    
+    <form action="">
+        <h2>SignUp</h2>
+        <div>
+            <div>
+                <label for="username">Username</label>
+                <input type="text" id="username">
+            </div>
+            <span class="error"></span>
+        </div>
+        <div>
+            <div>
+                <label for="password">Password</label>
+                <input type="password" id="password">
+            </div>
+            <span class="error"></span>
+        </div>
+        <div>
+            <div>
+                <label for="email">Email</label>
+                <input type="text" id="email">
+            </div>
+            <span class="error"></span>
+        </div>
+        <div>
+            <div>
+                <label for="fullname">FullName</label>
+                <input type="text" id="fullname">
+            </div>
+            <span class="error"></span>
+        </div>
+        <input type="submit" value="Submit">
+    </form>
 
 
-    <script></script>
+    <script>
+        const username = document.getElementById("username");
+        const password = document.getElementById("password");
+        const email = document.getElementById("email");
+        const form = document.querySelector('form');
+        const logError = (error, node) => {
+            let message = node.parentElement.parentElement.querySelector('.error')
+            message.innerText = error;
+        }
+        form.addEventListener("submit", function (e) {
+            e.preventDefault();
+            let reg = /\S+@\S+/;
+            if (username.value == '') {
+                logError('Vui long dien vao truong nay', username)
+            } else if (username.value.length < 5 || username.value.length > 10) {
+                logError('Username phai co do dai tu 5 den 10 ky tu', username)
+            }
+            if (password.value == '') {
+                logError('Vui long dien vao truong nay', password)
+            } else if (password.value.length < 5 || password.value.length > 10) {
+                logError('Password phai co do dai tu 5 den 10 ky tu', password)
+            }
+            if (email.value == '') {
+                logError('Vui long dien vao truong nay', email)
+            } else if (!reg.test(email)) {
+                logError('Email khong dung dinh dang', email)
+            }
+        })
+
+    </script>
 </body>
+
 </html>

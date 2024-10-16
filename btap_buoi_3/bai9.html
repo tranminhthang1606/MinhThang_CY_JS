@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+            max-width: 1000px;
+            width: 100%;
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .big_image {
+            width: 100%;
+        }
+
+        .small_images {
+            display: flex;
+            width: 100%;
+            gap: 20px;
+
+        }
+
+        .small_images img {
+            max-width: 150px;
+            cursor: pointer;
+        }
+
+        img {
+            width: 100%;
+            object-fit: cover;
+            max-height: 400px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="big_image">
+            <img src="./assets/footer-1.png" alt="">
+        </div>
+        <div class="small_images">
+            <img src="./assets/footer-1.png" alt="">
+            <img src="./assets/footer-2.png" alt="">
+            <img src="./assets/footer-3.png" alt="">
+            <img src="./assets/footer-4.png" alt="">
+            <img src="./assets/footer-5.png" alt="">
+            <img src="./assets/footer-6.png" alt="">
+        </div>
+    </div>
+    <script>
+        const small_images = document.querySelectorAll('.small_images img');
+        small_images.forEach(img => {
+            img.addEventListener('click', () => {
+                document.querySelector('.big_image img').src = img.src;
+            })
+        });
+    </script>
+</body>
+
+</html>
