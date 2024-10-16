@@ -2,12 +2,23 @@ const a = {
     a: 'hehe',
     b: 'hoho'
 };
+
 const copyFunction = (arr) => {
-    return {...arr}
+    let copyObject={};
+    for (const [key,value] of Object.entries(arr)) {
+        copyObject[key] = value   
+    }
+    return copyObject;
 }
 
-const result = copyFunction(a);
-result.a = 'vua dep trai';
-console.log(result);
+let copyObject = copyFunction(a);
+copyObject.a = "vua dep trai";
+console.log(copyObject);
 console.log(a);
+
+
+
+
+
+
 
