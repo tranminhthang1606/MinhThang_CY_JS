@@ -1,0 +1,96 @@
+.wrapper {
+    width: 70%;
+    margin: 20px auto;
+}
+
+.wrapper .score {
+    text-align: center;
+    font-size: 30px;
+}
+
+.wrapper .question {
+    font-size: 26px;
+}
+
+.wrapper .answers .answer {
+    float: left;
+    width: 45%;
+    text-align: center;
+    border: 1px dashed #cdcdcd;
+    box-sizing: border-box;
+    margin: 10px;
+    padding: 20px;
+    cursor: pointer;
+}
+
+.wrapper .answers .answer:hover {
+    background: coral;
+    color: white;
+}
+
+.wrapper .change__questions {
+    clear: both;
+    float: left;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+.wrapper .change__questions button {
+    background: coral;
+    padding: 10px 20px;
+    color: white;
+    border-radius: 10px;
+}
+
+.wrapper .answers .answered{
+    background: coral;
+    color: white;
+}
+
+.table-container {
+    width: 90%;
+    max-width: 1000px;
+    margin: auto;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden; 
+}
+.hide{
+    display: none;
+}
+.styled-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+}
+
+.styled-table thead tr {
+    background-color: #009879;
+    color: white;
+    text-align: left;
+    font-size: 1.2em;
+}
+
+.styled-table th, .styled-table td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #dddddd;
+}
+
+.styled-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+.styled-table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+.styled-table tbody tr:last-of-type {
+    border-bottom: 2px solid #009879;
+}
+
+.styled-table tbody tr:hover {
+    background-color: #f1f1f1;
+    cursor: pointer;
+}
