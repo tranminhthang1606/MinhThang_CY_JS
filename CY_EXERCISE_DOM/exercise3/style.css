@@ -1,0 +1,89 @@
+.container{
+    max-width: 800px;
+    margin: auto;
+    text-align: center;
+}
+.notification{
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+.answer > div.block{
+    display: inline-block;
+    margin: 20px;
+    background: #ff9900;
+    box-sizing: content-box;
+    padding:20px;
+    position: relative;
+}
+
+.image{
+    width:200px;
+}
+
+.answer div.cover{
+    position: absolute;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+    background:#ff9900;
+}
+
+.answer {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 60%;
+    margin: 20px auto;
+    perspective: 1000px;
+}
+
+.answer .answer-item{
+    border: 2px solid #ff9900;
+    height: 50px;
+    width: 50px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform-style: preserve-3d;
+    transition: transform 0.8s;
+}
+.answer .answer-item div{
+    transform: rotateX(-180deg);
+    transition: transform 0.8s;
+}
+
+.user-answer form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 20%;
+    width: 100%;
+    margin: auto;
+}
+
+.user-answer form input{
+    padding: 10px;
+    font-size: 20px;
+    border-radius: 10px;
+    border: 1px solid #ff9900;
+    margin-bottom: 10px;
+    outline: #ff9900;
+}
+
+.user-answer form button{
+    font-size: 20px;
+    border-radius: 10px;
+    border: 1px solid #ff9900;
+    margin-bottom: 10px;
+    outline: #ff9900;
+    color: #ff9900;
+    background: white;
+    cursor: pointer;
+    transition: 0.8s all;
+}
+.user-answer form button:hover{
+    background: #ff9900;
+    color: white;
+}

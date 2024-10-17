@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="./style.css">
+    <title>Title</title>
+</head>
+
+<body>
+    <div class="container">
+        <h4>Chương trình máy tính bỏ túi</h4>
+        <div class="calculator__interface">
+            <div>
+                <label>
+                    <input type="number" class="num-1" placeholder="Số 1">
+                </label>
+                <span id="operator"></span>
+                <label>
+                    <input type="number" class="num-2" placeholder="Số 2">
+                </label>
+            </div>
+
+            <div>
+                <span>Kết quả</span>
+                <span id="result"></span>
+            </div>
+        </div>
+
+        <div class="calculator__interact">
+            <button onclick="getResult('plus')">Cộng</button>
+            <button onclick="getResult('sub')">Trừ</button>
+            <button onclick="getResult('multiple')">Nhân</button>
+            <button onclick="getResult('divide')">Chia</button>
+        </div>
+
+    </div>
+    <script src="main.js" type="text/javascript"></script>
+</body>
+
+</html>

@@ -1,0 +1,27 @@
+*{
+    box-sizing: content-box;
+}
+input{
+    border: none;
+    border-bottom: 1px dotted #12264f;
+    outline: none;
+    width: auto;
+}
+
+#content{
+    line-height: 40px;
+}
+#content span{
+    padding: 5px;
+    background: #12264f;
+    border-radius: 50%;
+    color: white;
+    margin: 0 5px;
+}
+
+.error{
+    border-bottom: 1px dotted red;
+}
+.success{
+    border-bottom: 1px dotted green;
+}

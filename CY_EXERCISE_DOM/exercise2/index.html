@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../output.css">
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="score">Score: <span>0</span></div>
+        <p class="question">
+        </p>
+
+        <div class="answers">
+        </div>
+        <div class="change__questions">
+            <button class="previous" onclick="changeQuestion(-1)">Previous</button>
+            <button onclick="submitAnswer()">Nộp Bài</button>
+            <button class="next" onclick="changeQuestion(1)">Next</button>
+        </div>
+        <div class="table-container hide">
+            <table class="styled-table">
+                <thead>
+                    <tr>
+                        <th>Câu hỏi</th>
+                        <th>Câu trả lời đúng</th>
+                        <th>Câu trả lời của bạn</th>
+                        <th>Điểm</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <link rel="stylesheet" href="style.css">
+    <script src="main.js" type="text/javascript"></script>
+</body>
+
+</html>
