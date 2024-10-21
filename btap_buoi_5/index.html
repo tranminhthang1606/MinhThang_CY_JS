@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
+        integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
+        crossorigin="anonymous" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container">
+        <h2>Playlist</h2>
+        <div class="playlist">
+            <div class="playlist__dist"></div>
+            <img src="https://avatar-ex-swe.nixcdn.com/song/2021/02/02/f/6/0/9/1612257024442_500.jpg" alt="">
+        </div>
+        <div class="controller">           
+            <div class="controller__back">
+                <i onclick="prevAudio()" class="fas fa-step-backward"></i>
+            </div>
+            <div class="controller__play">
+                <i onclick="pauseAudio()" class="fas fa-pause icon-pause hide"></i>
+                <i onclick="playAudio()" class="fas fa-play icon-play"></i>
+            </div>
+            <div class="controller__next">
+                <i onclick="nextAudio()" class="fas fa-step-forward"></i>
+            </div>
+        </div>
+        <div class="display">
+            <div id="progressBar">
+                <div id="progress"></div>
+            </div>
+            <div id="timer">
+                <span id="countTime"></span><span id="minutes"></span><span id="seconds"></span>
+            </div>
+        </div>
+        <hr>
+        
+        <script src="./index.js"></script>
+
+</body>
+
+</html>
