@@ -28,6 +28,7 @@ let offsetY = 0;
 let minutes = document.querySelector('#minutes');
 let seconds = document.querySelector('#seconds');
 let countTime = document.querySelector('#countTime')
+let isCounting = false;
 let linkMusicsRef = new Proxy({
     value: '',
 }, {
@@ -68,7 +69,7 @@ let timerRef = new Proxy({
         if (target.value !== value) {
             if (target.value > value) {
                 if ((value / 60) < songMinutes) {
-                    songMinutes--;
+                    songMinutes = Math.floor(value / 60);
                 }
             }
             target.value = value;
@@ -79,8 +80,17 @@ let timerRef = new Proxy({
                 countTime.textContent = songMinutes + ':' + Math.floor(value) + '/';
             }
             if (value >= 60) {
-                if (value % 60 == 0 && (value / 60) > songMinutes) {
-                    songMinutes++;
+
+                if (isDragging) {
+                    if (value % 60 == 0 && (value / 60) > songMinutes) {
+                        songMinutes++;
+                    }
+                } else {
+                    if (!isCounting) {
+                        if (value >= 60 && (value / 60) > songMinutes) {
+                            songMinutes = Math.floor(value / 60);
+                        }
+                    }
                 }
                 if (value % 60 < 10) {
                     countTime.textContent = '0' + songMinutes + ':0' + value % 60 + '/';
@@ -91,26 +101,28 @@ let timerRef = new Proxy({
     }
 })
 
+
 const timerMusic = () => {
     audioElement.addEventListener('loadedmetadata', () => {
-        seconds.textContent = Math.floor(audioElement.duration % 60);
+        seconds.textContent = Math.floor(audioElement.duration % 60) < 10 ? '0' + Math.floor(audioElement.duration % 60) : Math.floor(audioElement.duration % 60);
         minutes.textContent = Math.floor(audioElement.duration / 60) + ':';
     });
     audioElement.addEventListener('ended', () => {
         linkMusicsRef.value++;
     });
     audioElement.addEventListener('timeupdate', () => {
-
+        isCounting = true;
         timerRef.value = Math.floor(audioElement.currentTime);
-
         if (!isDragging) {
             const progressPercent = (audioElement.currentTime / audioElement.duration) * 100;
             progress.style.left = (progressBar.clientWidth - progress.clientWidth) / 100 * progressPercent + 'px';
+            timerRef.value = Math.floor(audioElement.currentTime);
         }
     });
 
     progressBar.addEventListener('click', function (e) {
         isDragging = false;
+        isCounting = false;
         const clickX = e.offsetX;
         const progressBarWidth = progressBar.clientWidth;
         let newLeft = clickX;
@@ -120,11 +132,15 @@ const timerMusic = () => {
         } else if (newLeft > progressBarWidth - progress.clientWidth) {
             newLeft = progressBarWidth - progress.clientWidth;
         }
-        progress.style.left = `${newLeft}px`;
+        const progressPercent = newLeft / (progressBar.clientWidth - progress.clientWidth);
+        audioElement.currentTime = progressPercent * audioElement.duration;
+        timerRef.value = Math.floor(audioElement.currentTime)
+        console.log(Math.floor(audioElement.currentTime));
     })
 
     progress.addEventListener('mousedown', (e) => {
         isDragging = true;
+        isCounting = false;
         offsetX = e.clientX - progress.offsetLeft;
         progress.style.cursor = 'grabbing';
         playingRef.value = !playingRef.value;
@@ -141,9 +157,8 @@ const timerMusic = () => {
             }
             progress.style.left = `${newLeft}px`;
             const progressPercent = newLeft / (progressBar.clientWidth - progress.clientWidth);
-            console.log(progressPercent * audioElement.duration);
-            
             audioElement.currentTime = progressPercent * audioElement.duration;
+            timerRef.value = Math.floor(audioElement.currentTime)
         }
     });
 
@@ -153,6 +168,7 @@ const timerMusic = () => {
         const newLeft = e.clientX - offsetX;
         const progressPercent = newLeft / (progressBar.clientWidth - progress.clientWidth);
         audioElement.currentTime = progressPercent * audioElement.duration;
+        timerRef.value = Math.floor(audioElement.currentTime)
     });
 
 }
